@@ -1,0 +1,128 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+<form action = "{{url_for('Summarize')}}" method="POST">
+    <textarea name="data" cols="30" rows="10" placeholder="Enter your Data" required="required"></textarea>
+    <input type="range" min="50" max="1000" value="100" name="maxL">
+    <button type="reset" >Clear</button>
+    <button type="submit" >Submit</button>
+
+</form>
+
+
+
+<h3>Summarized Data: </h3>
+<textarea cols="30" rows="10" name="result">{{result}}</textarea>
+<button type=”copyToClipBoard”> Copy </button>
+</body>     
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #header {
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        #container {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        form{
+            width: 80%; 
+            padding: 20px;
+            margin-right: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="header">
+    <h1>Data Summarization</h1>
+</div>
+
+<div id="container">
+    <form action="{{url_for('Summarize')}}" method="POST">
+        <textarea name="data" cols="30" rows="23" placeholder="Enter your Data" required="required"></textarea>
+        <input type="range" min="50" max="1000" value="100" name="maxL">
+        <button type="reset">Clear</button>
+        <button type="submit">Submit</button>
+    </form>
+
+    <form>
+    <textarea id="result" cols="30" rows="25" name="result">{{result}}</textarea>
+    <button onclick="copyToClipboard()">Copy</button>
+    </form>
+
+</div>
+
+<script>
+function copyToClipboard() {
+    var textarea = document.getElementById('result');
+    textarea.select();
+    document.execCommand('copy');
+    textarea.setSelectionRange(0, 0);
+    alert('Text copied to clipboard!');
+}
+</script>
+
+</body>
+</html>
